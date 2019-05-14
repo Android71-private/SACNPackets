@@ -33,7 +33,7 @@ namespace SACNPackets
 			SourceName = sourceName;
 			UUID = uuid;
 			UdpClient = new UdpClient();
-			UdpClient.DontFragment = true;
+			UdpClient.DontFragment = false;
 			UdpClient.Client.SendBufferSize = 2560000;
 			Port = port;    //5568
 		}

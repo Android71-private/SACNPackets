@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.Console;
 using static System.Net.Mime.MediaTypeNames;
@@ -30,9 +31,13 @@ namespace SACNPackets
 						Environment.Exit(1);
 					if (int.TryParse(rcS, out repeatCount))
 					{
-						if (repeatCount > 2 || repeatCount < 1)
+						if (repeatCount > 5 || repeatCount < 1)
 							repeatCount = 1;
-						sacnSender.Send(deviceIP, repeatCount);
+						for (int i = 0; i < 101; i++)
+						{
+							sacnSender.Send(deviceIP, repeatCount);
+							Thread.Sleep(30);
+						}
 					}
 					else
 					{
